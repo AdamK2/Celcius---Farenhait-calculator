@@ -99,14 +99,23 @@ function checkRoundWinner(playerPick, computerPick) {
 		computerResultElem.innerHTML = "No winner";
 		playerResultElem.innerHTML = "No winner";	
 	} else if (winnerIs == 'player') {
-        playerResultElem.innerHTML = "Player Win! Score: Player=" + (player.score+1) + "  Score: Computer= "+ (computer.score);
+        playerResultElem.innerHTML = "Win!";
         player.score++;	
     } else if (winnerIs == 'computer') {
-        computerResultElem.innerHTML = "Computer Win! Score= " + (computer.score+1) +  "  Score: Player= "+ (player.score);
+        computerResultElem.innerHTML = "Win!";
         computer.score++;
     }		
 console.log(player.score)
 console.log(computer.score)
+
+// Sprawdzanie, czy któryś z graczy zdobył 10 punktów.
+function checkWinner () {
+	if (player.score >= 10 || computer.score >= 10) {
+	gameState = 'ended';
+	setGameElements();
+	} 
+}
+checkWinner()
 }
 
 function playerPick(playerPick) {
@@ -122,12 +131,9 @@ function setGamePoints() {
     computerPointsElem.innerHTML = computer.score;
 }
 
-function finishGame () {
-	if (player.score  == 2) {
-		playerResultElem.innerHTML = "You have 2 points";
-	}
-console.log(finishGame)	
-}
+
+
+
 
 
 
