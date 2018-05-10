@@ -32,8 +32,13 @@ function setGameElements() {
         resultsElem.style.display = 'block';
       break;
     case 'ended':
-        newGameBtn.innerText = 'Jeszcze raz';
-    case 'notStarted':
+        if (player.score >= 10) {
+		newGameBtn.innerHTML = player.name + " Win! Jeszcze raz?";
+		}
+		if (computer.score >= 10) {
+		newGameBtn.innerHTML = "Computer Win! Jeszcze raz?";
+		}	
+	case 'notStarted':
     default:
         newGameElem.style.display = 'block';
         pickElem.style.display = 'none';
@@ -105,15 +110,14 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Win!";
         computer.score++;
     }		
-console.log(player.score)
-console.log(computer.score)
+setGamePoints()
 
 // Sprawdzanie, czy któryś z graczy zdobył 10 punktów.
 function checkWinner () {
 	if (player.score >= 10 || computer.score >= 10) {
 	gameState = 'ended';
-	setGameElements();
-	} 
+	setGameElements();		
+	} 	
 }
 checkWinner()
 }
@@ -130,8 +134,6 @@ function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
-
-
 
 
 
