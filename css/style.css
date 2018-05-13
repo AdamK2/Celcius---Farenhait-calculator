@@ -1,4 +1,7 @@
 .container {
 	padding: 30px;
 }	
+.col-xs-3 {
+	text-align: center;
+}
 
